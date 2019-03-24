@@ -5,12 +5,16 @@ require "json"
 
 class HTTP::Server::Context
   property! session
+
+  def session
+    @session.not_nil!
+  end
 end
 
 module Session
   class Handler(T)
 	include HTTP::Handler
-	
+
     def initialize(@session_key = "cr.session", secret = raise("Please set a secret"))
       @encoder = Encoder.new(secret)
     end
