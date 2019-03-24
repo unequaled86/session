@@ -1,6 +1,6 @@
 require "openssl/hmac"
 require "base64"
-require "crypto/md5"
+require "digest/md5"
 
 module Session
   class Encoder
@@ -26,7 +26,7 @@ module Session
     end
 
     def hex_digest(data)
-      Crypto::MD5.hex_digest(data)
+      Digest::MD5.hexdigest(data)
     end
   end
 end
