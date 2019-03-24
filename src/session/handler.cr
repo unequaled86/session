@@ -8,7 +8,9 @@ class HTTP::Server::Context
 end
 
 module Session
-  class Handler(T) < HTTP::Handler
+  class Handler(T)
+	include HTTP::Handler
+	
     def initialize(@session_key = "cr.session", secret = raise("Please set a secret"))
       @encoder = Encoder.new(secret)
     end
